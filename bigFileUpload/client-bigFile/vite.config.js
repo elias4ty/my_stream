@@ -9,7 +9,7 @@ export default defineConfig({
       '/upload': {
         target: 'http://localhost:6666',
         changeOrigin: true
-      }
+      },
     }
   }
 })
