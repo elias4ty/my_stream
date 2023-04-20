@@ -48,14 +48,10 @@ function uploadFile(){
   upload.click();
 }
 
-function cancel() {
-  file.value = {};
-}
-
 const file = ref({});
 let tusObj = null;
 /**
- * 0: 未开始，
+ * 0：未开始
  * 1：上传中
  * 2：暂停
  * 3：完成
@@ -99,7 +95,7 @@ onMounted(() => {
     phase.value = 0;
 
     tusObj = new tus.Upload(file.value, {
-      endpoint: 'http://localhost:5555/files/',
+      endpoint: 'http://10.81.209.1:5555/files/',
       metadata: {
         filename: file.value.name,
         filetype: file.value.type,
@@ -133,6 +129,11 @@ function excuteUpload() {
 function stop() {
   tusObj.abort();
   phase.value = 2;
+}
+
+function cancel() {
+  file.value = {};
+  tusObj.abort();
 }
 </script>
 
